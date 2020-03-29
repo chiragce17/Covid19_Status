@@ -1,5 +1,4 @@
 clear
-Clear-Content .\rawoutput.txt -ErrorAction Ignore
 
 $url = "https://www.worldometers.info/coronavirus/"
 $req = Invoke-WebRequest -Uri $url
@@ -18,7 +17,7 @@ $outarray += "`nTotal Deaths : " + $output[$windex+3]
 $outarray += "`nNew Deaths : " + $output[$windex+4]
 $outarray += "`nTotal Recovered : " + $output[$windex+5]
 
-Write-Host "`nThis script is to retrieve COVID-19 status world wide from the below reference URL`n"
+Write-Host "`nThis script is to retrieve COVID-19 virus status world wide in last 24 hours from the below reference URL`n"
 Write-Host "`nhttps://www.worldometers.info/coronavirus/ `n" -BackgroundColor darkred
 
 
@@ -67,3 +66,4 @@ while($sindex -le $output.Length){
 
 Write-Host "************ Top 30 Countries *******************`n"
 $outarray1 | ft -AutoSize
+Remove-Item .\rawoutput.txt -Force -Confirm:$false
